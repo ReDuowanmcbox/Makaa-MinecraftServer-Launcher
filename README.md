@@ -3,6 +3,5 @@
 ![Python 3.4+](https://img.shields.io/badge/Python-3.4%2B-blue)  
 Makaa is a A lightweight, easy-to-use, command-line operation, one-click Minecraft server launcher.  
 You can extend Makaa language support by modifying the makaa.py, which is always single-file.  
-Best of all, he doesn't need to install, it's an out-of-the-box app!
-
-![](README_CN.md)
+Best of all, he doesn't need to install, it's an out-of-the-box app!  
+[中文文档](README_CN.md)
