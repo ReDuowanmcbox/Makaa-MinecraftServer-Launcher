@@ -163,7 +163,7 @@ if __name__ == '__main__':
         if sys.argv[2] == 'en':
             toEN()
         startCommand()
-    if sys.argv[2] == 'en':
+    if sys.argv[1] == 'en':
         toEN()
     picurl = 'https://i.328888.xyz/2023/02/02/IRccv.gif'
     f = urllib.request.urlopen(picurl)
