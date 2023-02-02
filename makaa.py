@@ -11,7 +11,6 @@ import urllib.request
 VER = '0.1.1 Beta'
 
 # 
-#   Copyright (c) 2022-2023 BlocksTeam 
 #   Makaa Server Launch
 #
 
