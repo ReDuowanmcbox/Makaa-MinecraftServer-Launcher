@@ -137,7 +137,7 @@ def startServer():
     except:
         print(getText('zh_CN',3))
 def command(threadname):
-    print(getText('zh_CN',4) + threadname)
+    print(colorama.Fore.CYAN + getText('zh_CN',4) + threadname)
     while True:
         command = input('Python command: ')
         run = exec(command)
