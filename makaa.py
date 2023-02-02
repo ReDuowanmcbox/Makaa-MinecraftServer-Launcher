@@ -16,7 +16,7 @@ VER = '0.1.1 Beta'
 
 print(colorama.Fore.RED + '[Makaa Server Launch Version: ' + VER + ']' )
 
-zh_CN = [
+langs = [
 'Jar文件被吃掉了!找到了一些幸存的Jar文件,列表如下,请输入使用的名称.','致命错误!(Makaa Server Error: Server File Not Found[E000])',
 'ServerFile走丢了!如果这不是个意外,请将make设为True(Makaa OS:谋杀犯!','出错了!QwQ Makaa Server 未知错误',
 '[Makaa Server] Makaa 命令行模式 线程:','启动服务器',
@@ -24,11 +24,7 @@ zh_CN = [
 ]
 
 def getText(lang, num):
-    if lang == 'zh':
-        return zh_CN[num]
-    else:
-        return en_US[num]
-
+    return langs[num]
 class GetFile:
 
     def __init__(self, file_type=''):
@@ -156,7 +152,19 @@ def rmTemp():
     except FileNotFoundError:
         pass
     sys.exit(0)
+def toEN():
+    langs = [
+    'Jar file does not exist, please select one.','Makaa Server Error: Server File Not Found[E000]',
+    'ServerFile does not exist! If this is not an accident, you can set the make property of the class to True in command mode',
+    'Makaa Server Unkown Error ,Lmao','[Makaa Server] Makaa Command Mode Thread:',
+    'Start Server','New properties','Command Mode','Exit']
 if __name__ == '__main__':
+    if sys.argv[1] == 'command':
+        if sys.argv[2] == 'en':
+            toEN()
+        startCommand()
+    if sys.argv[2] == 'en':
+        toEN()
     picurl = 'https://i.328888.xyz/2023/02/02/IRccv.gif'
     f = urllib.request.urlopen(picurl)
     data = f.read()
