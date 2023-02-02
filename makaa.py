@@ -16,7 +16,18 @@ VER = '0.1.1 Beta'
 
 print(colorama.Fore.RED + '[Makaa Server Launch Version: ' + VER + ']' )
 
+zh_CN = [
+'Jar文件被吃掉了!找到了一些幸存的Jar文件,列表如下,请输入使用的名称.','致命错误!(Makaa Server Error: Server File Not Found[E000])',
+'ServerFile走丢了!如果这不是个意外,请将make设为True(Makaa OS:谋杀犯!','出错了!QwQ Makaa Server 未知错误',
+'[Makaa Server] Makaa 命令行模式 线程:','启动服务器',
+'修改配置文件','命令行模式','退出'
+]
 
+def getText(lang, num):
+    if lang == 'zh':
+        return zh_CN[num]
+    else:
+        return en_US[num]
 
 class GetFile:
 
@@ -70,7 +81,7 @@ def makeServer(startmem,serverFile):
 def findJarFile():
     address = os.getcwd() + '/server'
     m, n    = GetFile('jar').get(address)
-    print('Jar文件被吃掉了!找到了一些幸存的Jar文件,列表如下,请输入使用的名称.')
+    print(getText('zh_CN',0))
     print(str(m))
     del n
     return 'startInputSelf'
@@ -83,9 +94,9 @@ class MakaaServer:
         if serverFile == '':
             stauts = findJarFile()
             if stauts != '':
-                self.serverFile = input('请输入Jar文件名:')
+                self.serverFile = input('fileName:')
             else:
-                print("致命错误!(Makaa Server Error: Server File Not Found[E000])")
+                print(getText('zh_CN',1))
     
     def startServer(self):
         """Start Makaa Minecraft Server"""
@@ -100,7 +111,7 @@ class MakaaServer:
                 cofing = f.read()
             cofing = cofing.split(',')
         if cofing[0] != self.serverFile:
-            print('ServerFile走丢了!如果这不是个意外,请将make设为True(Makaa OS:谋杀犯!')
+            print(getText('zh_CN',2))
         else:
             if cofing[1] == 'True':
                 reStart = True
@@ -118,7 +129,7 @@ class MakaaServer:
                 while True:
                     makeServer(startmem,self.serverFile)
             except:
-                print(colorama.Fore.CYAN + 'Makaa 已关闭' )
+                print(colorama.Fore.CYAN + 'Makaa Exit' )
     def stopServer(self):
         """Stop Makaa Minecraft Server"""
         os.system('taskkill /F /IM java.exe')
@@ -128,9 +139,9 @@ def startServer():
     try:
         server = MakaaServer()
     except:
-        print('出错了!QwQ Makaa Server 未知错误')
+        print(getText('zh_CN',3))
 def command(threadname):
-    print('[Makaa Server] Makaa 命令行模式 Thread %s' % threadname)
+    print(getText('zh_CN',4) + threadname)
     while True:
         command = input('Python command: ')
         run = exec(command)
@@ -153,14 +164,14 @@ if __name__ == '__main__':
         code.write(data)
     #判断是否安装Java
     if(not os.system('java')):
-        print(colorama.Fore.RED + '正在下载Java Please Wait!')
+        print(colorama.Fore.RED + 'Download Java Please Wait!')
         if 'win' in sys.platform:
             downloadUrl = 'https://www.onlinedown.net/iopdfbhjl/10044859?module=download&t=website'
             #对不起Windows用户 我只能送你到这一步了
             webbrowser.open(downloadUrl)
             sys.exit()
         else:
-            print('Linux不支持自动安装Python!')
+            print('Please Download Java!')
     if 'win' in sys.platform:
         os.system('cls')
     else:
@@ -170,11 +181,11 @@ if __name__ == '__main__':
     window.geometry('850x500')
     photo = tk.PhotoImage(file="IRccv.gif")
     w = tk.Label(window, image=photo)
-    l1 = tk.Label(window, text='Makaa Server Launch Version ' + VER + ' QAQ[Tips] Makaa 会自动寻找Jar文件',  font=('Arial', 12), width=80, height=2)
-    b1 = tk.Button(window, text='启动服务器', width=10, height=1, command=startServer)
-    b2 = tk.Button(window, text='修改配置文件', width=10, height=1, command=newCofing)
-    b3 = tk.Button(window, text='命令行模式', width=10, height=1, command=startCommand)
-    b4 = tk.Button(window, text='退出', width=10, height=1, command=rmTemp)
+    l1 = tk.Label(window, text='Makaa Server Launch Version ' + VER + ' QAQ',  font=('Arial', 12), width=80, height=2)
+    b1 = tk.Button(window, text=getText('zh_CN',5), width=10, height=1, command=startServer)
+    b2 = tk.Button(window, text=getText('zh_CN',6), width=10, height=1, command=newCofing)
+    b3 = tk.Button(window, text=getText('zh_CN',7), width=10, height=1, command=startCommand)
+    b4 = tk.Button(window, text=getText('zh_CN',8), width=10, height=1, command=rmTemp)
     l1.pack()
     b2.pack()
     b3.pack()
