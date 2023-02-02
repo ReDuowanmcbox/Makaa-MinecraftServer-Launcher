@@ -1,12 +1,13 @@
-import tkinter as tk
 import os
+import sys
 import time
 import psutil
-import colorama
 import _thread
-import urllib.request
-import sys
+import colorama
 import webbrowser
+import tkinter as tk
+import urllib.request
+
 VER = '0.1.1 Beta'
 
 # 
